@@ -61,10 +61,12 @@ class SlotRejected(Action):
     def name(self) -> Text:
         return "reject_slot"
 
-    def run(self, dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-
-        dispatcher.utter_message(text="The Slot has been rejected.")
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        d = tracker.latest_message['entities']
+        t = d[0]
+        v = t["value"]
+        # print(v)
+        s = "The Slot has been rejected. New Slot is " + v
+        dispatcher.utter_message(text=s)
 
         return []

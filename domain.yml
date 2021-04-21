@@ -8,6 +8,12 @@ intents:
   - mood_great
   - mood_unhappy
   - bot_challenge
+  - reject_suggest:
+      use_entities:
+        - date
+
+entities:
+  - date
 
 responses:
   utter_greet:
@@ -28,6 +34,11 @@ responses:
 
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."
+
+  utter_reject_suggest:
+  - text: "Enter your preffered slot."
+
+
 
 session_config:
   session_expiration_time: 60
