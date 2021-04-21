@@ -32,9 +32,6 @@ responses:
   utter_goodbye:
   - text: Bye
   utter_iamabot:
-<<<<<<< HEAD
-  - text: I am a bot, powered by Rasa.
-=======
   - text: "I am a bot, powered by Rasa."
 
   utter_reject_suggest:
@@ -46,7 +43,6 @@ session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 
->>>>>>> bd8749e31459de6270291f98ba1fb471c42e39de
 
 actions:
   - accept_slot
