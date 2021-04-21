@@ -94,3 +94,18 @@ nlu:
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
+
+- intent: reject_suggest
+  examples: | 
+    - check [26th April 2020]{"entity":"date", "value":"26th April 2020"}
+    - check [28th April 2020]{"entity":"date", "value":"28th April 2020"}
+    - check [30th Jan 2020]{"entity":"date", "value":"30th Jan 2020"}
+    - [26th March 2021]{"entity":"date", "value":"26th March 2021"}
+    - check [10th June 2020]{"entity":"date", "value":"10th June 2020"}
+    - check [16th May 2020]{"entity":"date", "value":"16th May 2020"}
+    - [15th Aug 2020]{"entity":"date", "value":"15th Aug 2020"}
+    - [26th August 2020]{"entity":"date", "value":"26th August 2020"}
+    - [26th December 2021]{"entity":"date", "value":"26th December 2021"}
+    - check [26th Nov 2020]{"entity":"date", "value":"26th Nov 2020"}
+    - [26th November 2020]{"entity":"date", "value":"26th November 2020"}
+    - check [26th September 2020]{"entity":"date", "value":"26th September 2020"}

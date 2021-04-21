@@ -1,8 +1,9 @@
 Chatbot for Interview Scheduling
 
-rasa train
-rasa run actions 
-rasa shell --endpoints endpoints.yml
+1.  rasa train
+2.  cd actions
+3.  rasa run actions
+4.  rasa shell --endpoints endpoints.yml
 
 Authors:
 1. Poornartha Sawant
