@@ -28,3 +28,22 @@ stories:
   - action: utter_did_that_help
   - intent: deny
   - action: utter_goodbye
+
+
+- story: slot agree
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: ask_slot
+  - intent: affirm
+  - action: accept_slot
+  - action: utter_goodbye
+
+- story: slot reject
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: ask_slot
+  - intent: affirm
+  - action: accept_slot
+  - action: utter_goodbye
