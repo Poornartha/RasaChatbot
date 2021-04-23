@@ -11,3 +11,10 @@ rules:
   steps:
   - intent: bot_challenge
   - action: utter_iamabot
+
+- rule: welcome user
+  conversation_start: true  # this rule only applies at the beginning of a conversation
+  steps:
+    - action: utter_greet
+    - intent: greet
+    - action: ask_slot

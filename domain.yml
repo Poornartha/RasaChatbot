@@ -41,8 +41,6 @@ responses:
   - text: "I am a bot, powered by Rasa."
   utter_reject_suggest:
   - text: "Enter your preffered slot."
-  utter_check:
-  - text: "Please wait for a few moments"
 
 
 actions:
@@ -53,4 +51,3 @@ actions:
   - utter_goodbye
   - utter_greet
   - get_slot
-  - utter_time
