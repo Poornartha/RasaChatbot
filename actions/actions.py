@@ -8,7 +8,7 @@
 # This is a simple example for a custom action which utters "Hello World!"
 
 from typing import Any, Text, Dict, List
-
+from datetime import datetime
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 
@@ -65,8 +65,25 @@ class SlotRejected(Action):
         d = tracker.latest_message['entities']
         t = d[0]
         v = t["value"]
-        # print(v)
-        s = "The Slot has been rejected. New Slot is " + v
+        print(v)
+        s = "The Slot has been rejected. New Slot is {}".format(v)
         dispatcher.utter_message(text=s)
+
+        return []
+
+class GetSlot(Action):
+
+    def name(self) -> Text:
+        return "get_slot"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        time = tracker.get_slot("time")
+        print(time)
+        time_object = datetime.strptime(time, "%Y-%m-%dT%H:%M:%S.%f%z")
+        print(time_object)
+        dispatcher.utter_message("Please wait for a few moments till we get back to you.")
 
         return []

@@ -42,11 +42,17 @@ stories:
 - story: slot reject
   steps:
   - intent: greet
+  - action: utter_greet
   - action: ask_slot
   - intent: deny
   - action: utter_reject_suggest
   - intent: reject_suggest
-    entities:
-    - date: "26th April 2020"
-  - action: reject_slot
-  - action: utter_goodbye
+  - action: get_slot
+
+- story: ask time
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_time
+  - action: get_slot
+  - action: utter_time

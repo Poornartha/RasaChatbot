@@ -109,3 +109,11 @@ nlu:
     - check [26th Nov 2020]{"entity":"date", "value":"26th Nov 2020"}
     - [26th November 2020]{"entity":"date", "value":"26th November 2020"}
     - check [26th September 2020]{"entity":"date", "value":"26th September 2020"}
+    - check tomorrow
+    - check today
+
+- intent: ask_time
+  examples: |
+    - What time is it??
+    - What is today?
+    - Time?

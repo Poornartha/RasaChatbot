@@ -12,12 +12,18 @@ intents:
   - mood_great
   - mood_unhappy
   - bot_challenge
+  - ask_time
   - reject_suggest:
       use_entities:
         - date
 
 entities:
-  - date
+  - time
+
+
+slots:
+  time:
+    type: any
 
 responses:
   utter_greet:
@@ -33,15 +39,10 @@ responses:
   - text: Bye
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."
-
   utter_reject_suggest:
   - text: "Enter your preffered slot."
-
-
-
-session_config:
-  session_expiration_time: 60
-  carry_over_slots_to_new_session: true
+  utter_check:
+  - text: "Please wait for a few moments"
 
 
 actions:
@@ -51,3 +52,5 @@ actions:
   - reject_slot
   - utter_goodbye
   - utter_greet
+  - get_slot
+  - utter_time
