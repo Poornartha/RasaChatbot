@@ -4,6 +4,7 @@ Chatbot for Interview Scheduling
 2.  cd actions
 3.  rasa run actions
 4.  rasa shell --endpoints endpoints.yml
+5.  docker run -p 8000:8000 rasa/duckling
 
 Authors:
 1. Poornartha Sawant
