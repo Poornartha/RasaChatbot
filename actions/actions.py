@@ -73,23 +73,28 @@ class SlotRejected(Action):
 
 class GetSlot(Action):
 
-    def __init__(self):
-        self.sender_dict = dict()
+    # def __init__(self):
+    #     self.sender_dict = dict()
 
     def name(self) -> Text:
         return "get_slot"
 
-    def run(self, dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+    async def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        time = tracker.get_slot("time")
-        print(time)
-        time_object = datetime.strptime(time, "%Y-%m-%dT%H:%M:%S.%f%z")
-        print(time_object)
-        self.sender_dict[tracker.sender_id] = [{'time_value' : time_object , 'boolean_value' : True}]
-        print(self.sender_dict)
+        conversation_id = tracker.sender_id
 
-        dispatcher.utter_message("Please wait for a few moments till we get back to you.")
+        # time = tracker.get_slot("time")
+        # print(time)
+        # time_object = datetime.strptime(time, "%Y-%m-%dT%H:%M:%S.%f%z")
+        # print(time_object)
+        # self.sender_dict[tracker.sender_id] = [{'time_value' : time_object , 'boolean_value' : True}]
+        # print('This is the sender id',tracker.sender_id)
+
+        # # print('This is the dictionary',self.sender_dict)
+        # # print('This is the slots',tracker.slots)
+        # # print('This is the events',tracker.events)
+        # # print('This is the latest message',tracker.latest_message)
+        
+        dispatcher.utter_message("Please wait for a few moments till we get back to you. {} ".format(conversation_id))
 
         return []
