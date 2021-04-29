@@ -12,9 +12,21 @@ rules:
   - intent: bot_challenge
   - action: utter_iamabot
 
-- rule: welcome user
+
+- rule: activate information form
   conversation_start: true  # this rule only applies at the beginning of a conversation
   steps:
+    - intent: user
     - action: utter_greet
-    - intent: greet
+    - action: information_form
+    - active_loop:  information_form
+
+- rule: submit form
+  condition:
+    - active_loop: information_form
+  steps:
+    - action: information_form
+    - active_loop: null
+    - slot_was_set:
+      - requested_slot: null
     - action: ask_slot

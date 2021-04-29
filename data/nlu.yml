@@ -114,8 +114,27 @@ nlu:
     - tomorrow
     - today
 
-- intent: ask_time
+- intent: information_name
   examples: |
-    - What time is it??
-    - What is today?
-    - Time?
+    - My name is [shubh sanghvi]{"entity":"username" , "value":"shubh sanghvi"}
+    - [shubh sanghvi]{"entity":"username", "value":"shubh sanghvi"}
+    - The name is [shubh sanghvi]{"entity":"username", "value":"shubh sanghvi"}
+
+- intent: information_id
+  examples: |
+    - My employee id is [0001]{"entity":"empid" , "value":"0001"}
+    - [0001]{"entity":"empid" , "value":"0001"}
+    - Id is [0001]{"entity":"empid" , "value":"0001"}
+
+- intent: user
+  examples: |
+    - /user
+    - /information_user
+    - /give_information
+
+- intent: thankyou
+  examples: |
+    - okay great thanks
+    - thank you
+    - sure thanks
+    - thanks bye
