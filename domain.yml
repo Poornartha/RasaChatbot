@@ -20,10 +20,21 @@ intents:
 entities:
   - time
 
+# slots:
+#   time:
+#     type: any
 
-slots:
-  time:
-    type: any
+forms: 
+  name_form: 
+  - type: from_text
+  last_form:
+  - type: from_text
+
+slots: 
+  first_name:
+    type: text
+  last_name:
+    type: text
 
 responses:
   utter_greet:
@@ -41,6 +52,10 @@ responses:
   - text: "I am a bot, powered by Rasa."
   utter_reject_suggest:
   - text: "Enter your preffered slot."
+  utter_submit:
+  - text: "Okay gotcha name. Thanks!!"
+  utter_slots_values: 
+  - text: "I will remember that your name is {first_name} {last_name}! "
 
 
 actions:
