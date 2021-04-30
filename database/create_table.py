@@ -38,8 +38,8 @@ def main():
     sql_create_users_table = """ CREATE TABLE IF NOT EXISTS users (
                                         id integer PRIMARY KEY AUTOINCREMENT,
                                         name text NOT NULL,
-                                        sender_id text NOT NULL,
-                                        emp_id integer
+                                        sender_id text NOT NULL UNIQUE,
+                                        emp_id integer NOT NULL UNIQUE
                                     ); """
 
     sql_create_slots_table = """CREATE TABLE IF NOT EXISTS slots (
