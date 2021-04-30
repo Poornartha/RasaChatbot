@@ -98,7 +98,7 @@ Sanic-Cors==0.10.0.post3
 sanic-jwt==1.5.0
 Sanic-Plugins-Framework==0.9.5
 scikit-learn==0.24.1
-scipy==1.6.2
+scipy==1.5.4
 sentry-sdk==0.19.5
 six==1.15.0
 sklearn-crfsuite==0.3.6

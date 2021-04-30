@@ -27,33 +27,22 @@ intents:
 
 entities:
   - time
-  - username
-  - empid
 
-slots:
-  time:
-    type: any
-  username:
+# slots:
+#   time:
+#     type: any
+
+forms: 
+  name_form: 
+  - type: from_text
+  last_form:
+  - type: from_text
+
+slots: 
+  first_name:
     type: text
-    influence_conversation: False
-    auto_fill: False
-  empid:
-    type: float
-    influence_conversation: False
-    auto_fill: False
-  timing_value:
-    type: bool
-    influence_conversation: False
-    auto_fill: False
-
-forms:
-  information_form:
-    username:
-      - type: from_entity
-        entity: username
-    empid:
-      - type: from_entity
-        entity: empid    
+  last_name:
+    type: text
 
 responses:
   utter_greet:
@@ -71,10 +60,11 @@ responses:
   - text: "I am a bot, powered by Rasa."
   utter_reject_suggest:
   - text: "Enter your preffered slot."
-  utter_ask_username:
-  - text: "Please enter your firstname and lastname"
-  utter_ask_empid:
-  - text: "Please enter your employee id"
+  utter_submit:
+  - text: "Okay gotcha name. Thanks!!"
+  utter_slots_values: 
+  - text: "I will remember that your name is {first_name} {last_name}! "
+
 
 actions:
   - accept_slot
