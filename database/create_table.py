@@ -36,26 +36,26 @@ def main():
     conn = create_connection(database)
 
     sql_create_users_table = """ CREATE TABLE IF NOT EXISTS users (
-                                        id integer PRIMARY KEY,
+                                        id integer PRIMARY KEY AUTOINCREMENT,
                                         name text NOT NULL,
                                         sender_id text NOT NULL,
                                         emp_id integer
                                     ); """
 
     sql_create_slots_table = """CREATE TABLE IF NOT EXISTS slots (
-                                    id integer PRIMARY KEY, 
+                                    id integer PRIMARY KEY AUTOINCREMENT, 
                                     start timestamp,
                                     end timestamp
                                 );"""
 
     sql_create_interview_table = """CREATE TABLE IF NOT EXISTS interviews (
-                                    id integer PRIMARY KEY, 
+                                    id integer PRIMARY KEY AUTOINCREMENT, 
                                     location text,
                                     mode text
                                 );"""
 
     sql_create_calender_table = """CREATE TABLE IF NOT EXISTS calender (
-                                    id integer PRIMARY KEY, 
+                                    id integer PRIMARY KEY AUTOINCREMENT, 
                                     user_id integer not null,
                                     slot_id integer not null,
                                     FOREIGN KEY (user_id) REFERENCES users (id) on delete cascade,
@@ -63,7 +63,7 @@ def main():
                                 );"""
 
     sql_create_schedule_table = """CREATE TABLE IF NOT EXISTS schedule (
-                                    id integer PRIMARY KEY, 
+                                    id integer PRIMARY KEY AUTOINCREMENT,   
                                     user_id integer not null,
                                     interview_id integer not null,
                                     FOREIGN KEY (user_id) REFERENCES users (id) on delete cascade,
