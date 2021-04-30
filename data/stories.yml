@@ -30,21 +30,29 @@ stories:
 #   - action: utter_goodbye
 
 
+# - story: ask information
+#   steps:
+#     - intent: greet
+#     - action: utter_greet
+#     - intent: user
+#     - action: information_form
+#     - active_loop: information_form
+
 - story: slot agree
   steps:
-  - intent: greet
-  - action: utter_greet
   - action: ask_slot
   - intent: affirm
+  - slot_was_set:
+    - timing_value: True
   - action: accept_slot
   - action: utter_goodbye
 
 - story: slot reject
   steps:
-  - intent: greet
-  - action: utter_greet
   - action: ask_slot
   - intent: deny
+  - slot_was_set:
+    - timing_value: False
   - action: utter_reject_suggest
   - intent: reject_suggest
   - action: get_slot

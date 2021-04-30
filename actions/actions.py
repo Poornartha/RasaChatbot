@@ -7,11 +7,11 @@
 
 # This is a simple example for a custom action which utters "Hello World!"
 
-from typing import Any, Text, Dict, List
+from typing import Any, Text, Dict, List , Union
 from datetime import datetime
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
-
+from rasa_sdk.forms import FormAction
 
 class ActionHelloWorld(Action):
 
@@ -36,6 +36,10 @@ class AskSlot(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
+        print('This is the entity',tracker.latest_message["entities"])
+        print('This is the slot',tracker.slots)
+        print('Username:',tracker.get_slot("username"))
+        print('Empid:',tracker.get_slot("empid"))
         dispatcher.utter_message(text="Hello, will you be on 26th April at 12 PM?")
 
         return []
@@ -94,7 +98,7 @@ class GetSlot(Action):
         # # print('This is the slots',tracker.slots)
         # # print('This is the events',tracker.events)
         # # print('This is the latest message',tracker.latest_message)
-        
+
         dispatcher.utter_message("Please wait for a few moments till we get back to you. {} ".format(conversation_id))
 
         return []
