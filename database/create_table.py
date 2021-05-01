@@ -58,16 +58,16 @@ def main():
                                     id integer PRIMARY KEY AUTOINCREMENT, 
                                     user_id integer not null,
                                     slot_id integer not null,
-                                    FOREIGN KEY (user_id) REFERENCES users (id) on delete cascade,
-                                    FOREIGN KEY (slot_id) REFERENCES slots (id) on delete cascade
+                                    FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE,
+                                    FOREIGN KEY (slot_id) REFERENCES slots (id) ON DELETE CASCADE
                                 );"""
 
     sql_create_schedule_table = """CREATE TABLE IF NOT EXISTS schedule (
                                     id integer PRIMARY KEY AUTOINCREMENT,   
                                     user_id integer not null,
                                     interview_id integer not null,
-                                    FOREIGN KEY (user_id) REFERENCES users (id) on delete cascade,
-                                    FOREIGN KEY (interview_id) REFERENCES interviews (id) on delete cascade
+                                    FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE,
+                                    FOREIGN KEY (interview_id) REFERENCES interviews (id) ON DELETE CASCADE
                                 );"""
 
     if conn is not None:
