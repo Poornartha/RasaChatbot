@@ -52,7 +52,6 @@ def create_interview(conn, interview):
     conn.commit()
     return cur.lastrowid
 
-from database import create_connection
 def create_schedule(conn, schedule):
     sql = ''' INSERT INTO schedule(user_id,interview_id)
               VALUES(?,?) '''

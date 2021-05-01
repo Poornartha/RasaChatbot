@@ -11,6 +11,8 @@ from typing import Any, Text, Dict, List
 from datetime import datetime
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
+import sqlite3
+from sqlite3 import Error
 
 class ActionHelloWorld(Action):
 
@@ -28,10 +30,30 @@ class ActionHelloWorld(Action):
 
 class InsertInformation(Action):
 
+    def create_connection(self):
+
+        conn = None
+        try:
+            conn = sqlite3.connect("/home/poornartha/Desktop/Git/RasaChatbot/actions/database.db")
+            return conn
+        except Error as e:
+            pass
+
+        return conn
+
+    def create_user(self, conn, user):
+
+        sql = ''' INSERT INTO users(name,sender_id,emp_id)
+                VALUES(?,?,?) '''
+        cur = conn.cursor()
+        cur.execute(sql, user)
+        conn.commit()
+        return cur.lastrowid
+
     def name(self) -> Text:
         return "insert_information"
 
-    def run(self, dispatcher: CollectingDispatcher,
+    async def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
@@ -40,7 +62,16 @@ class InsertInformation(Action):
         print('Username:',tracker.get_slot("username"))
         print('Empid:',tracker.get_slot("empid"))
         print('Sender Id is:', tracker.sender_id)
+
+        conn = self.create_connection()
+        
+        with conn:
+
+            user = (tracker.get_slot("username"), tracker.sender_id, tracker.get_slot("empid"))
+            user_id = self.create_user(conn, user)
+
         dispatcher.utter_message(text="Hello, will you be on 26th April at 12 PM?")
+
         return []
 
 class AskSlot(Action):
