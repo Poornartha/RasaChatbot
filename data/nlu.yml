@@ -132,6 +132,13 @@ nlu:
     - /information_user
     - /give_information
 
+- intent: get_schedule
+  examples: |
+    - /schedule
+    - /interviews
+    - Get me my schedule
+    - which interviews do i have to conduct?
+
 - intent: thankyou
   examples: |
     - okay great thanks

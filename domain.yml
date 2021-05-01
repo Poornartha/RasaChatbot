@@ -19,6 +19,7 @@ intents:
       use_entities:
         - empid
   - user
+  - get_schedule
   - thankyou
   - ask_time
   - reject_suggest:
@@ -83,5 +84,7 @@ actions:
   - accept_slot
   - reject_slot
   - get_slot
+  - give_schedule
+  - action_reminder_interview
   - utter_goodbye
   - utter_greet  

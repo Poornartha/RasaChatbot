@@ -11,6 +11,7 @@ from typing import Any, Text, Dict, List
 from datetime import datetime
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
+from rasa_sdk.events import ReminderScheduler
 import sqlite3
 from sqlite3 import Error
 
@@ -34,7 +35,7 @@ class InsertInformation(Action):
 
         conn = None
         try:
-            conn = sqlite3.connect("/home/poornartha/Desktop/Git/RasaChatbot/actions/database.db")
+            conn = sqlite3.connect("database.db")
             return conn
         except Error as e:
             pass
@@ -62,15 +63,13 @@ class InsertInformation(Action):
         print('Username:',tracker.get_slot("username"))
         print('Empid:',tracker.get_slot("empid"))
         print('Sender Id is:', tracker.sender_id)
-
         conn = self.create_connection()
         
         with conn:
-
             user = (tracker.get_slot("username"), tracker.sender_id, tracker.get_slot("empid"))
             user_id = self.create_user(conn, user)
 
-        dispatcher.utter_message(text="Hello, will you be on 26th April at 12 PM?")
+        dispatcher.utter_message(text="Thankyou for your information")
 
         return []
 
@@ -83,7 +82,9 @@ class AskSlot(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        dispatcher.utter_message(text="Would you be available on 2nd May 12pm!!")
+        #   date = Here the query of free slots will come which will pick the first slot
+        text = "Would you be available on {}".format(date)
+        dispatcher.utter_message(text=text)
 
         return []
 
@@ -149,5 +150,37 @@ class GetSlot(Action):
         # # print('This is the latest message',tracker.latest_message)
 
         dispatcher.utter_message("Please wait for a few moments till we get back to you. {} ".format(conversation_id))
+
+        return []
+
+class GiveSchedule(Action):
+
+    def name(self) -> Text:
+        return "give_schedule"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        sender_id = tracker.sender_id
+
+        #   With the sender id we can fetch interviews of the respective user along with time 
+
+        text = "Following are the interviews:- " #  interviews with timw with respect to user
+        dispatcher.utter_message(text=text)
+
+        return []
+
+class ActionReminderInterview(Action):
+
+    def name(self) -> Text:
+        return "action_reminder_interview"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        #   reminder should be set here
+        dispatcher.utter_message(text="")
 
         return []
