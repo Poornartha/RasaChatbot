@@ -61,8 +61,8 @@ responses:
   utter_cheer_up:
   - text: 'Here is something to cheer you up:'
     image: https://i.imgur.com/nGF1K8f.jpg
-  utter_did_that_help:
-  - text: Did that help you?
+  utter_help:
+  - text: How may i help you??
   utter_happy:
   - text: Great, carry on!
   utter_goodbye:
@@ -77,10 +77,11 @@ responses:
   - text: "Please enter your employee id"
 
 actions:
-  - accept_slot
   - action_hello_world
+  - insert_information
   - ask_slot
+  - accept_slot
   - reject_slot
-  - utter_goodbye
-  - utter_greet
   - get_slot
+  - utter_goodbye
+  - utter_greet  

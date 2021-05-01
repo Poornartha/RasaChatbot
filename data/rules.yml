@@ -7,28 +7,10 @@ rules:
   - intent: goodbye
   - action: utter_goodbye
 
-- rule: Activation form
-  steps: 
-  - intent: request_names
-  - action: name_form
-  - active_loop: name_form
-
-- rule: Submit form
-  condition: 
-  - active_loop: name_form
-  steps: 
-  - action: name_form
-  - active_loop: null
-  - slot_was_set: 
-    - requested_slot: null
-  - action: utter_submit
-  - action: utter_slots_values
-
 - rule: Say 'I am a bot' anytime the user challenges
   steps:
   - intent: bot_challenge
   - action: utter_iamabot
-
 
 - rule: activate information form
   conversation_start: true  # this rule only applies at the beginning of a conversation
@@ -46,4 +28,10 @@ rules:
     - active_loop: null
     - slot_was_set:
       - requested_slot: null
+    - action: insert_information
     - action: ask_slot
+- rule: How may i help you?
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - action: utter_help
