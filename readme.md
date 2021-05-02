@@ -2,7 +2,7 @@ Chatbot for Interview Scheduling
 
 1.  Clone the repository.
 2.  Make a python environment using **python -m venv venv**.
-3.  activate the environment using **cd env/Scripts** then **activate** then **cd ../..**.
+3.  Activate the environment using **cd env/Scripts** then **activate** then **cd ../..**.
 4.  Install the requirements using **pip install -r requirements.txt**.
 5.  Train the model using **rasa train**.
 6.  Open another shell with activate environment.
