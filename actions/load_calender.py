@@ -52,11 +52,11 @@ def main():
 
         for slot in slots:
 
-            calender = (3, slot[0])
-            create_calender(conn, calender)
-            calender = (4, slot[0])
-            create_calender(conn, calender)
-            calender = (5, slot[0])
+            # calender = (7, slot[0])
+            # create_calender(conn, calender)
+            # calender = (8, slot[0])
+            # create_calender(conn, calender)
+            calender = (10, slot[0])
             create_calender(conn, calender)
 
 

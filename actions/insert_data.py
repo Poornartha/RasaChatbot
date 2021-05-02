@@ -83,22 +83,22 @@ def main():
     # Insert Values in Tables
     with conn:
 
-        user = ('Poornartha Sawant', '12775630', '100')
-        user_id = create_user(conn, user)
+        # user = ('Poornartha Sawant', '12775630', '100')
+        # user_id = create_user(conn, user)
 
 
-        slot = ('2015-01-01', '2015-01-02')
-        slot_id = create_slot(conn, slot)
+        # slot = ('2015-01-01', '2015-01-02')
+        # slot_id = create_slot(conn, slot)
 
 
-        calender = (user_id, slot_id)
-        calender_id = create_calender(conn, calender)
+        # calender = (user_id, slot_id)
+        # calender_id = create_calender(conn, calender)
 
-        interview = ('India', 'Online')
+        interview = ('Canada', 'Online')
         interview_id = create_interview(conn, interview)
 
-        schedule = (user_id, interview_id)
-        schedule_id = create_schedule(conn, schedule)
+        # schedule = (user_id, interview_id)
+        # schedule_id = create_schedule(conn, schedule)
 
         print("Data Added")
 

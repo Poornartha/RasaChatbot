@@ -68,6 +68,11 @@ nlu:
     - My name is [shubh sanghvi]{"entity":"username" , "value":"shubh sanghvi"}
     - [shubh sanghvi]{"entity":"username", "value":"shubh sanghvi"}
     - The name is [shubh sanghvi]{"entity":"username", "value":"shubh sanghvi"}
+    - My name is [poornartha sawant]{"entity":"username" , "value":"poornartha sawant"}
+    - [Rajat Joshi]{"entity":"username", "value":"Rajat Joshi"}
+    - The name is [Shagun Lamba]{"entity":"username", "value":"Shagun Lamba"}
+    - [Ritwik]{"entity":"username", "value":"Ritwik"}
+    - The name is [Ratnesh Patil]{"entity":"username", "value":"Ratnesh Patil"}
 
 - intent: information_id
   examples: |
@@ -81,7 +86,6 @@ nlu:
     - /information_user
     - /give_information
 
-<<<<<<< HEAD
   
 - intent: slot_check
   examples: |
@@ -90,14 +94,6 @@ nlu:
     - set interview
     - check my slot
     - what is my slot
-=======
-- intent: get_schedule
-  examples: |
-    - /schedule
-    - /interviews
-    - Get me my schedule
-    - which interviews do i have to conduct?
->>>>>>> 2897a2730a9d312d57a3731037b6910404ee6460
 
 - intent: thankyou
   examples: |

@@ -38,15 +38,28 @@ def main():
     sql_create_status_table = """ CREATE TABLE IF NOT EXISTS status (
                                     id integer PRIMARY KEY AUTOINCREMENT,
                                     interview_id integer not null,
+                                    slot_id integer not null,
                                     interviewer_1 integer not null,
                                     interviewer_2 integer not null,
                                     interviewer_3 integer not null,
                                     FOREIGN KEY (interview_id) REFERENCES interviews (id) ON DELETE CASCADE
+                                    FOREIGN KEY (slot_id) REFERENCES slots (id) ON DELETE CASCADE
+                                ); """
+
+    sql_create_user_status_table = """ CREATE TABLE IF NOT EXISTS user_status (
+                                    id integer PRIMARY KEY AUTOINCREMENT,
+                                    user_id integer not null,
+                                    status_id integer not null,
+                                    active integer not null,
+                                    FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
+                                    FOREIGN KEY (status_id) REFERENCES slots (id) ON DELETE CASCADE
                                 ); """
 
     if conn is not None:
 
-        create_table(conn, sql_create_status_table)
+        # create_table(conn, sql_create_status_table)
+
+        create_table(conn, sql_create_user_status_table)
 
         print("Database Created")
     else:
