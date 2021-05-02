@@ -58,3 +58,8 @@ stories:
   - action: utter_reject_suggest
   - intent: reject_suggest
   - action: get_slot
+
+- story:  give schedule
+  steps:
+  - intent: get_schedule
+  - action: give_schedule

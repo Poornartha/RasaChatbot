@@ -81,6 +81,7 @@ nlu:
     - /information_user
     - /give_information
 
+<<<<<<< HEAD
   
 - intent: slot_check
   examples: |
@@ -89,6 +90,14 @@ nlu:
     - set interview
     - check my slot
     - what is my slot
+=======
+- intent: get_schedule
+  examples: |
+    - /schedule
+    - /interviews
+    - Get me my schedule
+    - which interviews do i have to conduct?
+>>>>>>> 2897a2730a9d312d57a3731037b6910404ee6460
 
 - intent: thankyou
   examples: |
