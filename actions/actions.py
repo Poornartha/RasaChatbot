@@ -76,6 +76,43 @@ class InsertInformation(Action):
 
 class AskSlot(Action):
 
+
+    def create_connection(self):
+
+        conn = None
+        try:
+            conn = sqlite3.connect("/home/poornartha/Desktop/Git/RasaChatbot/actions/database.db")
+            return conn
+        except Error as e:
+            pass
+
+        return conn
+
+    def fetch_user(self, conn, sender_id):
+        cur = conn.cursor()
+        cur.execute(f'SELECT * FROM users where sender_id = "{sender_id}"')
+
+        row = cur.fetchone()
+
+        return row
+
+
+    def fetch_calender(self, conn, user_id):
+            cur = conn.cursor()
+            cur.execute(f'SELECT * FROM calender where user_id = {user_id}')
+
+            row = cur.fetchone()
+
+            return row
+
+    def fetch_slot(self, conn, slot_id):
+            cur = conn.cursor()
+            cur.execute(f'SELECT * FROM slots where id = "{slot_id}"')
+
+            row = cur.fetchone()
+
+            return row
+
     def name(self) -> Text:
         return "ask_slot"
 
@@ -83,7 +120,20 @@ class AskSlot(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        dispatcher.utter_message(text="Would you be available on 2nd May 12pm!!")
+        conn = self.create_connection()
+        sender_id = "05d6093732124e05bc8749123c93ef32"
+
+        try:
+            with conn:
+                # dispatcher.utter_message(text=f'Would you be available on {sender_id}')
+                user = self.fetch_user(conn, sender_id)
+                calender = self.fetch_calender(conn, user[0])
+                # dispatcher.utter_message(text=f'Would you be available on {calender}')
+                slot_id = calender[2]
+                slot = self.fetch_slot(conn, slot_id)
+                dispatcher.utter_message(text=f'Would you be available on {slot[1]}')
+        except Exception as e:
+            dispatcher.utter_message(text=f'Error Occured! {e}')
 
         return []
 
